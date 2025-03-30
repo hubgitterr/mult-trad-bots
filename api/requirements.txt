@@ -1,0 +1,14 @@
+fastapi
+uvicorn[standard]
+sqlalchemy
+psycopg2-binary
+pydantic[email]
+pydantic-settings
+python-dotenv
+pandas
+pandas-ta
+numpy
+python-binance
+websockets
+supabase
+APScheduler

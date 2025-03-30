@@ -1,0 +1,25 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/index.py",
+      "use": "@vercel/python",
+      "config": { "maxLambdaSize": "15mb", "runtime": "python3.11" }
+    },
+    {
+      "src": "package.json",
+      "use": "@vercel/next",
+      "config": { "distDir": ".next" }
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/api/v1/(.*)",
+      "destination": "/api/index.py"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/$1"
+    }
+  ]
+}
