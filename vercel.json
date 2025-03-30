@@ -2,24 +2,30 @@
   "version": 2,
   "builds": [
     {
-      "src": "api/index.py",
+      "src": "package.json",
+      "use": "@vercel/next"
+    },
+    {
+      "src": "backend/requirements.txt",
       "use": "@vercel/python",
       "config": { "maxLambdaSize": "15mb", "runtime": "python3.11" }
-    },
-    {
-      "src": "package.json",
-      "use": "@vercel/next",
-      "config": { "distDir": ".next" }
     }
   ],
-  "rewrites": [
+  "routes": [
     {
-      "source": "/api/v1/(.*)",
-      "destination": "/api/index.py"
+      "src": "/api/v1/(.*)",
+      "dest": "backend/main.py"
     },
     {
-      "source": "/(.*)",
-      "destination": "/$1"
+      "src": "/ws/(.*)",
+      "dest": "backend/main.py"
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/"
     }
   ]
 }
