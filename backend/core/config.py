@@ -32,6 +32,9 @@ class Settings(BaseSettings):
     # Optional: CORS Origins (example)
     # BACKEND_CORS_ORIGINS: Union[str, List[str]] = '["http://localhost:3000"]'
 
+    # JWT Secret for token verification (generate a strong random secret)
+    JWT_SECRET: str = "DEFAULT_FALLBACK_SECRET_CHANGE_ME" # Provide a default or ensure it's in .env
+
     class Config:
         case_sensitive = True
         # env_file = ".env" # pydantic-settings can load directly if needed
